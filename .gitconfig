@@ -1,0 +1,11 @@
+[user]
+	email = auden.woolfson@gmail.com
+	name = Auden Woolfson
+[alias]
+	br = branch
+	del = branch -D
+	co = checkout
+	cob = checkout -b
+	cm = commit -am
+	cp = cherry-pick
+	rb = rebase	

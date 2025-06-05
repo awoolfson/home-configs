@@ -136,5 +136,11 @@ __custom_git_ps1() {
     fi
 }
 
-# Set PS1 with colors
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[1;33m\]$(__custom_git_ps1)\[\033[00m\]\$ '
+__docker_context() {
+    local context=$(docker ps --format '{{.Names}}' 2>/dev/null | head -n 1)
+    if [ -n "$context" ]; then
+        printf " \001\033[1;35m\002[${context}]\001\033[0m\002"
+    fi
+}
+
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__docker_context)$(__custom_git_ps1)\$ '

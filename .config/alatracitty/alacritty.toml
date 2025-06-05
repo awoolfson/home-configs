@@ -1,0 +1,7 @@
+import = ["/home/awoolfson/alacritty/alacritty.toml"]
+
+live_config_reload = true
+
+[window]
+opacity = 0.9
+

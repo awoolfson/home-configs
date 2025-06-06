@@ -137,7 +137,8 @@ __custom_git_ps1() {
 }
 
 __docker_context() {
-    local context=$(docker ps --format '{{.Names}}' 2>/dev/null | head -n 1)
+    # Show only running containers (excludes paused/exited)
+    local context=$(docker ps --filter status=running --format '{{.Names}}' 2>/dev/null | head -n 1)
     if [ -n "$context" ]; then
         printf " \001\033[1;35m\002[${context}]\001\033[0m\002"
     fi
